@@ -1,4 +1,3 @@
-// Assignment code here
 var characterLength = 8;
 var choiceArr = [];
 
@@ -15,28 +14,30 @@ function writePassword() {
   var correctPrompts = getPrompts(); 
   var passwordText = document.querySelector("#password");
   
+  
   if (correctPrompts) {
     var newPassword = generatePassword();
     passwordText.value = newPassword;
   } else {
-    passwordText.value = " ";
+    passwordText.value = "";
   }
-};
+  
+}
 
 
 function generatePassword() {
-  var password = "";
-  for(var i = 0; i < characterLength; i++) {
-    var randomIndex = Math.floor(Math.random() * choiceArr.lenght);
+  var password = '';
+  for (var i = 0; i < characterLength; i++) {
+    var randomIndex = Math.floor(Math.random() * choiceArr.length);
     password = password + choiceArr[randomIndex];
   }
   return password;
-};
+}
 
 function getPrompts(){
   choiceArr = [];
   
-  characterLength = parseInt(prompt("How many characters do you want your password to be? (8 - 128 characters)"))
+  characterLength = parseInt(prompt("How many characters do you want your password to be? (8 - 128 characters)"));
   
   if(isNaN(characterLength) || characterLength < 8 || characterLength > 128) {
     alert("Character length has to be a number, 8 - 128 digits. Please try again.");
@@ -54,5 +55,5 @@ function getPrompts(){
   if (confirm("Would you like numbers in your password?")) {
     choiceArr = choiceArr.concat(numberArr);
   }
-  return true;
+  return choiceArr;
 };
